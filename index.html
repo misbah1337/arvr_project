@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <style>
+      /* Style tambahan jika diperlukan */
+      a-scene {
+        cursor: pointer;
+        position: relative; /* Menambahkan posisi relatif agar link bisa tampil di dalamnya */
+        height: 100vh; /* Menambahkan tinggi 100vh agar elemen penuh tinggi layar */
+        display: flex; /* Menjadikan elemen flex container */
+        flex-direction: column; /* Mengatur arah kolom untuk tata letak elemen flex */
+        align-items: center; /* Menengahkan elemen di dalamnya secara horizontal */
+        justify-content: center; /* Menengahkan elemen di dalamnya secara vertikal */
+      }
+
+      a-link {
+        color: #fff; /* Warna default link */
+        text-decoration: none; /* Menghilangkan garis bawah default link */
+        display: inline-block; /* Menampilkan link sebagai inline-block untuk dapat diatur lebar dan tingginya */
+        padding: 10px 20px; /* Menambahkan padding agar terlihat lebih baik */
+        background-color: #007bff; /* Warna latar belakang link */
+        border-radius: 5px; /* Membuat sudut kotak lebih lembut */
+        margin-bottom: 10px;
+        z-index: 1000; /* Memberikan margin agar link terlihat */
+        cursor: pointer; /* Menambahkan cursor pointer untuk memberi tahu bahwa ini adalah tautan yang dapat diklik */
+      }
+
+      a-link:hover {
+        background-color: #0056b3; /* Warna latar belakang saat di-hover */
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Environment (Dunia Bawah Laut) -->
+      <a-sky src="img/bg.png" rotation="0 -130 0"></a-sky>
+      <a-ocean></a-ocean>
+
+      <!-- Objek 3D dengan texture -->
+      <a-box
+        id="rotatingBox"
+        position="-2 1.5 -4"
+        rotation="0 45 0"
+        color="#FF0000"
+        material="src: url(https://i0.wp.com/www.amazine.co/wp-content/uploads/2015/10/hieroglif-mesir.jpg?fit=620%2C410&ssl=1)"
+        event-set__mouseenter="_event: mouseenter; _target: #rotatingBox; _delay: 0; rotation: 0 405 0"
+        event-set__mouseleave="_event: mouseleave; _target: #rotatingBox; _delay: 0; rotation: 0 45 0"
+        animation__rotate="property: rotation; dur: 5000; loop: true; to: 0 405 0"
+      ></a-box>
+
+      <!-- Tambahkan link untuk pindah ke halaman VR lainnya -->
+      <a-link href="wano.html">Pulau Wano Kuni</a-link>
+      <a-link href="manusia_ikan.html">Pulau manusia ikan</a-link>
+      <a-link href="waterseven.html">Pulau waterseven</a-link>
+    </a-scene>
+  </body>
+</html>
